@@ -47,6 +47,7 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 data/
+*lastrun.py
 
 # Translations
 *.mo

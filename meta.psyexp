@@ -97,7 +97,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="Pressione &quot;1&quot; ou &quot;2&quot; caso você reconheça a face humana na primeira ou segunda imagem, respectivamente.&amp;#10;&amp;#10;Você terá dois segundos para responder.&amp;#10;&amp;#10;Pressione a tecla “Espaço” do seu teclado para prosseguir." valType="str"/>
+        <Param name="text" updates="constant" val="Pressione &quot;1&quot; ou &quot;2&quot; caso você reconheça a face humana na primeira ou segunda imagem, respectivamente.&amp;#10;&amp;#10;Você terá dois segundos para responder a essa pergunta.&amp;#10;&amp;#10;Para indicar a confiança da sua resposta não há limite de tempo.&amp;#10;&amp;#10;Pressione a tecla “Espaço” do seu teclado para prosseguir." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
       </TextComponent>

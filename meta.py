@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v3.2.3),
-    on qui 24 out 2019 17:34:08 -03
+    on qui 24 out 2019 17:40:17 -03
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -92,7 +92,7 @@ key_resp_ti = keyboard.Keyboard()
 # Initialize components for Routine "instrucao_resposta"
 instrucao_respostaClock = core.Clock()
 text_ir = visual.TextStim(win=win, name='text_ir',
-    text='Pressione "1" ou "2" caso você reconheça a face humana na primeira ou segunda imagem, respectivamente.\n\nVocê terá dois segundos para responder.\n\nPressione a tecla “Espaço” do seu teclado para prosseguir.',
+    text='Pressione "1" ou "2" caso você reconheça a face humana na primeira ou segunda imagem, respectivamente.\n\nVocê terá dois segundos para responder a essa pergunta.\n\nPara indicar a confiança da sua resposta não há limite de tempo.\n\nPressione a tecla “Espaço” do seu teclado para prosseguir.',
     font='Arial',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 

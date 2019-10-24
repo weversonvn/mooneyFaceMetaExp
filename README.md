@@ -7,7 +7,9 @@ Experimento de metacognição utilizando faces de Mooney.
 * [PsychoPy v3.2.3](https://www.psychopy.org/) 
 
 ### Uso:
-Abra o arquivo **meta.psyexp** dentro do Psychopy e rode o experimento.
+Existem duas maneiras de rodar a aplicação:
+* Abra o arquivo **meta.psyexp** dentro do Psychopy e rode o experimento.
+* Execute `python meta.py` no terminal (para Linux) 
 
 ### Licença:
 

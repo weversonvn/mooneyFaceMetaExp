@@ -4,7 +4,7 @@
 Experimento de metacognição utilizando faces de Mooney.
 
 ### Requisitos:
-* [Psychopy 1.90.1](https://www.psychopy.org/) 
+* [PsychoPy v3.2.3](https://www.psychopy.org/) 
 
 ### Uso:
 Abra o arquivo **meta.psyexp** dentro do Psychopy e rode o experimento.

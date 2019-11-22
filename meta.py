@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v3.2.3),
-    on sex 22 nov 2019 15:32:37 -03
+    on sex 22 nov 2019 15:37:19 -03
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -1560,7 +1560,7 @@ for thisTrial_3 in trials_3:
                     key_resp_3.keys = theseKeys.name  # just the last key pressed
                     key_resp_3.rt = theseKeys.rt
                     # was this 'correct'?
-                    if (key_resp_3.keys == str(ee[i])) or (key_resp_3.keys == ee[i]):
+                    if (key_resp_3.keys == str(ee[i-1])) or (key_resp_3.keys == ee[i-1]):
                         key_resp_3.corr = 1
                     else:
                         key_resp_3.corr = 0
@@ -1592,7 +1592,7 @@ for thisTrial_3 in trials_3:
         if key_resp_3.keys in ['', [], None]:  # No response was made
             key_resp_3.keys = None
             # was no response the correct answer?!
-            if str(ee[i]).lower() == 'none':
+            if str(ee[i-1]).lower() == 'none':
                key_resp_3.corr = 1;  # correct non-response
             else:
                key_resp_3.corr = 0;  # failed to respond (incorrectly)

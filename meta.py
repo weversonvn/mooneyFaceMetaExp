@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v3.2.3),
-    on ter 29 out 2019 15:26:26 -03
+    on sex 22 nov 2019 15:32:37 -03
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -118,8 +118,8 @@ np.random.shuffle(f)
 np.random.shuffle(d)
 np.random.shuffle(ff)
 np.random.shuffle(dd)
-e = np.random.randint(2, size=40)
-ee = np.random.randint(2, size=40)
+e = np.random.randint(1,3, size=40)
+ee = np.random.randint(1,3, size=40)
 caminho = "./mooneyfaces/"
 file = ""
 bloco = 1
@@ -178,7 +178,7 @@ image_2 = visual.ImageStim(
 
 # Initialize components for Routine "resposta"
 respostaClock = core.Clock()
-text_resposta = visual.TextStim(win=win, name='text_resposta',
+text_4 = visual.TextStim(win=win, name='text_4',
     text='Qual a imagem com a face humana, 1 ou 2?',
     font='Arial',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
@@ -250,16 +250,16 @@ image_3 = visual.ImageStim(
     flipHoriz=False, flipVert=False,
     texRes=128, interpolate=True, depth=-1.0)
 
-# Initialize components for Routine "resposta"
-respostaClock = core.Clock()
-text_resposta = visual.TextStim(win=win, name='text_resposta',
+# Initialize components for Routine "resposta_2"
+resposta_2Clock = core.Clock()
+text_resposta_2 = visual.TextStim(win=win, name='text_resposta_2',
     text='Qual a imagem com a face humana, 1 ou 2?',
     font='Arial',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',
     depth=0.0);
-key_resp_2 = keyboard.Keyboard()
+key_resp_3 = keyboard.Keyboard()
 
 # Initialize components for Routine "confianca"
 confiancaClock = core.Clock()
@@ -357,8 +357,6 @@ while continueRoutine:
 for thisComponent in tela_inicialComponents:
     if hasattr(thisComponent, "setAutoDraw"):
         thisComponent.setAutoDraw(False)
-thisExp.addData('texto_tela_inicial.started', texto_tela_inicial.tStartRefresh)
-thisExp.addData('texto_tela_inicial.stopped', texto_tela_inicial.tStopRefresh)
 # the Routine "tela_inicial" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
@@ -410,8 +408,6 @@ while continueRoutine:
         win.timeOnFlip(key_resp, 'tStartRefresh')  # time at next scr refresh
         key_resp.status = STARTED
         # keyboard checking is just starting
-        waitOnFlip = True
-        win.callOnFlip(key_resp.clock.reset)  # t=0 on next screen flip
         win.callOnFlip(key_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
     if key_resp.status == STARTED and not waitOnFlip:
         theseKeys = key_resp.getKeys(keyList=['space'], waitRelease=False)
@@ -421,8 +417,6 @@ while continueRoutine:
             # check for quit:
             if "escape" == theseKeys:
                 endExpNow = True
-            key_resp.keys = theseKeys.name  # just the last key pressed
-            key_resp.rt = theseKeys.rt
             # a response ends the routine
             continueRoutine = False
     
@@ -447,17 +441,6 @@ while continueRoutine:
 for thisComponent in instrucao_respostaComponents:
     if hasattr(thisComponent, "setAutoDraw"):
         thisComponent.setAutoDraw(False)
-thisExp.addData('text_ir.started', text_ir.tStartRefresh)
-thisExp.addData('text_ir.stopped', text_ir.tStopRefresh)
-# check responses
-if key_resp.keys in ['', [], None]:  # No response was made
-    key_resp.keys = None
-thisExp.addData('key_resp.keys',key_resp.keys)
-if key_resp.keys != None:  # we had a response
-    thisExp.addData('key_resp.rt', key_resp.rt)
-thisExp.addData('key_resp.started', key_resp.tStartRefresh)
-thisExp.addData('key_resp.stopped', key_resp.tStopRefresh)
-thisExp.nextEntry()
 # the Routine "instrucao_resposta" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
@@ -509,8 +492,6 @@ while continueRoutine:
         win.timeOnFlip(key_resp_ii, 'tStartRefresh')  # time at next scr refresh
         key_resp_ii.status = STARTED
         # keyboard checking is just starting
-        waitOnFlip = True
-        win.callOnFlip(key_resp_ii.clock.reset)  # t=0 on next screen flip
         win.callOnFlip(key_resp_ii.clearEvents, eventType='keyboard')  # clear events on next screen flip
     if key_resp_ii.status == STARTED and not waitOnFlip:
         theseKeys = key_resp_ii.getKeys(keyList=['space'], waitRelease=False)
@@ -520,8 +501,6 @@ while continueRoutine:
             # check for quit:
             if "escape" == theseKeys:
                 endExpNow = True
-            key_resp_ii.keys = theseKeys.name  # just the last key pressed
-            key_resp_ii.rt = theseKeys.rt
             # a response ends the routine
             continueRoutine = False
     
@@ -546,17 +525,6 @@ while continueRoutine:
 for thisComponent in instrucao_inicioComponents:
     if hasattr(thisComponent, "setAutoDraw"):
         thisComponent.setAutoDraw(False)
-thisExp.addData('text_ii.started', text_ii.tStartRefresh)
-thisExp.addData('text_ii.stopped', text_ii.tStopRefresh)
-# check responses
-if key_resp_ii.keys in ['', [], None]:  # No response was made
-    key_resp_ii.keys = None
-thisExp.addData('key_resp_ii.keys',key_resp_ii.keys)
-if key_resp_ii.keys != None:  # we had a response
-    thisExp.addData('key_resp_ii.rt', key_resp_ii.rt)
-thisExp.addData('key_resp_ii.started', key_resp_ii.tStartRefresh)
-thisExp.addData('key_resp_ii.stopped', key_resp_ii.tStopRefresh)
-thisExp.nextEntry()
 # the Routine "instrucao_inicio" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
@@ -650,8 +618,6 @@ for thisTrial_3 in trials_3:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     bloco = bloco + 1
-    trials_3.addData('text_3.started', text_3.tStartRefresh)
-    trials_3.addData('text_3.stopped', text_3.tStopRefresh)
     
     # set up handler to look after randomisation of conditions etc
     trials = data.TrialHandler(nReps=40, method='random', 
@@ -738,8 +704,6 @@ for thisTrial_3 in trials_3:
         for thisComponent in fixateComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        trials.addData('text.started', text.tStartRefresh)
-        trials.addData('text.stopped', text.tStopRefresh)
         
         # ------Prepare to start Routine "case_1"-------
         routineTimer.add(0.200000)
@@ -768,7 +732,7 @@ for thisTrial_3 in trials_3:
             tThisFlipGlobal = win.getFutureFlipTime(clock=None)
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
-            if e[i] == 0:
+            if e[i] == 1:
                 file = caminho + 'f' + str(f[i]) + '.jpg'
             else:
                 file = caminho + 'd' +str(d[i]) + '.jpg'
@@ -813,8 +777,6 @@ for thisTrial_3 in trials_3:
         for thisComponent in case_1Components:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        trials.addData('image_1.started', image_1.tStartRefresh)
-        trials.addData('image_1.stopped', image_1.tStopRefresh)
         
         # ------Prepare to start Routine "inter_time"-------
         routineTimer.add(0.300000)
@@ -882,8 +844,6 @@ for thisTrial_3 in trials_3:
         for thisComponent in inter_timeComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        trials.addData('text_it.started', text_it.tStartRefresh)
-        trials.addData('text_it.stopped', text_it.tStopRefresh)
         
         # ------Prepare to start Routine "case_2"-------
         routineTimer.add(0.200000)
@@ -912,7 +872,7 @@ for thisTrial_3 in trials_3:
             tThisFlipGlobal = win.getFutureFlipTime(clock=None)
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
-            if e[i] == 1:
+            if e[i] == 2:
                 file = caminho + 'f' + str(f[i]) + '.jpg'
             else:
                 file = caminho + 'd' + str(d[i]) + '.jpg'
@@ -958,16 +918,13 @@ for thisTrial_3 in trials_3:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
         i = i + 1
-        trials.addData('image_2.started', image_2.tStartRefresh)
-        trials.addData('image_2.stopped', image_2.tStopRefresh)
         
         # ------Prepare to start Routine "resposta"-------
-        routineTimer.add(2.000000)
         # update component parameters for each repeat
         key_resp_2.keys = []
         key_resp_2.rt = []
         # keep track of which components have finished
-        respostaComponents = [text_resposta, key_resp_2]
+        respostaComponents = [text_4, key_resp_2]
         for thisComponent in respostaComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -983,7 +940,7 @@ for thisTrial_3 in trials_3:
         continueRoutine = True
         
         # -------Run Routine "resposta"-------
-        while continueRoutine and routineTimer.getTime() > 0:
+        while continueRoutine:
             # get current time
             t = respostaClock.getTime()
             tThisFlip = win.getFutureFlipTime(clock=respostaClock)
@@ -991,22 +948,22 @@ for thisTrial_3 in trials_3:
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
             
-            # *text_resposta* updates
-            if text_resposta.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # *text_4* updates
+            if text_4.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
-                text_resposta.frameNStart = frameN  # exact frame index
-                text_resposta.tStart = t  # local t and not account for scr refresh
-                text_resposta.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(text_resposta, 'tStartRefresh')  # time at next scr refresh
-                text_resposta.setAutoDraw(True)
-            if text_resposta.status == STARTED:
+                text_4.frameNStart = frameN  # exact frame index
+                text_4.tStart = t  # local t and not account for scr refresh
+                text_4.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(text_4, 'tStartRefresh')  # time at next scr refresh
+                text_4.setAutoDraw(True)
+            if text_4.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > text_resposta.tStartRefresh + 2-frameTolerance:
+                if tThisFlipGlobal > text_4.tStartRefresh + 2-frameTolerance:
                     # keep track of stop time/frame for later
-                    text_resposta.tStop = t  # not accounting for scr refresh
-                    text_resposta.frameNStop = frameN  # exact frame index
-                    win.timeOnFlip(text_resposta, 'tStopRefresh')  # time at next scr refresh
-                    text_resposta.setAutoDraw(False)
+                    text_4.tStop = t  # not accounting for scr refresh
+                    text_4.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(text_4, 'tStopRefresh')  # time at next scr refresh
+                    text_4.setAutoDraw(False)
             
             # *key_resp_2* updates
             waitOnFlip = False
@@ -1021,14 +978,6 @@ for thisTrial_3 in trials_3:
                 waitOnFlip = True
                 win.callOnFlip(key_resp_2.clock.reset)  # t=0 on next screen flip
                 win.callOnFlip(key_resp_2.clearEvents, eventType='keyboard')  # clear events on next screen flip
-            if key_resp_2.status == STARTED:
-                # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > key_resp_2.tStartRefresh + 2-frameTolerance:
-                    # keep track of stop time/frame for later
-                    key_resp_2.tStop = t  # not accounting for scr refresh
-                    key_resp_2.frameNStop = frameN  # exact frame index
-                    win.timeOnFlip(key_resp_2, 'tStopRefresh')  # time at next scr refresh
-                    key_resp_2.status = FINISHED
             if key_resp_2.status == STARTED and not waitOnFlip:
                 theseKeys = key_resp_2.getKeys(keyList=['1', '2'], waitRelease=False)
                 if len(theseKeys):
@@ -1039,6 +988,11 @@ for thisTrial_3 in trials_3:
                         endExpNow = True
                     key_resp_2.keys = theseKeys.name  # just the last key pressed
                     key_resp_2.rt = theseKeys.rt
+                    # was this 'correct'?
+                    if (key_resp_2.keys == str(e[i-1])) or (key_resp_2.keys == e[i-1]):
+                        key_resp_2.corr = 1
+                    else:
+                        key_resp_2.corr = 0
                     # a response ends the routine
                     continueRoutine = False
             
@@ -1063,16 +1017,21 @@ for thisTrial_3 in trials_3:
         for thisComponent in respostaComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        trials.addData('text_resposta.started', text_resposta.tStartRefresh)
-        trials.addData('text_resposta.stopped', text_resposta.tStopRefresh)
         # check responses
         if key_resp_2.keys in ['', [], None]:  # No response was made
             key_resp_2.keys = None
+            # was no response the correct answer?!
+            if str(e[i-1]).lower() == 'none':
+               key_resp_2.corr = 1;  # correct non-response
+            else:
+               key_resp_2.corr = 0;  # failed to respond (incorrectly)
+        # store data for trials (TrialHandler)
         trials.addData('key_resp_2.keys',key_resp_2.keys)
+        trials.addData('key_resp_2.corr', key_resp_2.corr)
         if key_resp_2.keys != None:  # we had a response
             trials.addData('key_resp_2.rt', key_resp_2.rt)
-        trials.addData('key_resp_2.started', key_resp_2.tStartRefresh)
-        trials.addData('key_resp_2.stopped', key_resp_2.tStopRefresh)
+        # the Routine "resposta" was not non-slip safe, so reset the non-slip timer
+        routineTimer.reset()
         
         # ------Prepare to start Routine "confianca"-------
         # update component parameters for each repeat
@@ -1141,13 +1100,8 @@ for thisTrial_3 in trials_3:
         for thisComponent in confiancaComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        trials.addData('text_2.started', text_2.tStartRefresh)
-        trials.addData('text_2.stopped', text_2.tStopRefresh)
         # store data for trials (TrialHandler)
         trials.addData('rating.response', rating.getRating())
-        trials.addData('rating.rt', rating.getRT())
-        trials.addData('rating.started', rating.tStart)
-        trials.addData('rating.stopped', rating.tStop)
         # the Routine "confianca" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         thisExp.nextEntry()
@@ -1226,8 +1180,6 @@ for thisTrial_3 in trials_3:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     bloco = bloco + 1
-    trials_3.addData('text_3.started', text_3.tStartRefresh)
-    trials_3.addData('text_3.stopped', text_3.tStopRefresh)
     
     # set up handler to look after randomisation of conditions etc
     trials_2 = data.TrialHandler(nReps=40, method='random', 
@@ -1314,8 +1266,6 @@ for thisTrial_3 in trials_3:
         for thisComponent in fixateComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        trials_2.addData('text.started', text.tStartRefresh)
-        trials_2.addData('text.stopped', text.tStopRefresh)
         
         # ------Prepare to start Routine "case_3"-------
         routineTimer.add(0.200000)
@@ -1389,8 +1339,6 @@ for thisTrial_3 in trials_3:
         for thisComponent in case_3Components:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        trials_2.addData('image.started', image.tStartRefresh)
-        trials_2.addData('image.stopped', image.tStopRefresh)
         
         # ------Prepare to start Routine "inter_time"-------
         routineTimer.add(0.300000)
@@ -1458,8 +1406,6 @@ for thisTrial_3 in trials_3:
         for thisComponent in inter_timeComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        trials_2.addData('text_it.started', text_it.tStartRefresh)
-        trials_2.addData('text_it.stopped', text_it.tStopRefresh)
         
         # ------Prepare to start Routine "case_4"-------
         routineTimer.add(0.200000)
@@ -1534,17 +1480,15 @@ for thisTrial_3 in trials_3:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
         i = i + 1
-        trials_2.addData('image_3.started', image_3.tStartRefresh)
-        trials_2.addData('image_3.stopped', image_3.tStopRefresh)
         
-        # ------Prepare to start Routine "resposta"-------
+        # ------Prepare to start Routine "resposta_2"-------
         routineTimer.add(2.000000)
         # update component parameters for each repeat
-        key_resp_2.keys = []
-        key_resp_2.rt = []
+        key_resp_3.keys = []
+        key_resp_3.rt = []
         # keep track of which components have finished
-        respostaComponents = [text_resposta, key_resp_2]
-        for thisComponent in respostaComponents:
+        resposta_2Components = [text_resposta_2, key_resp_3]
+        for thisComponent in resposta_2Components:
             thisComponent.tStart = None
             thisComponent.tStop = None
             thisComponent.tStartRefresh = None
@@ -1554,67 +1498,72 @@ for thisTrial_3 in trials_3:
         # reset timers
         t = 0
         _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-        respostaClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+        resposta_2Clock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
         frameN = -1
         continueRoutine = True
         
-        # -------Run Routine "resposta"-------
+        # -------Run Routine "resposta_2"-------
         while continueRoutine and routineTimer.getTime() > 0:
             # get current time
-            t = respostaClock.getTime()
-            tThisFlip = win.getFutureFlipTime(clock=respostaClock)
+            t = resposta_2Clock.getTime()
+            tThisFlip = win.getFutureFlipTime(clock=resposta_2Clock)
             tThisFlipGlobal = win.getFutureFlipTime(clock=None)
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
             
-            # *text_resposta* updates
-            if text_resposta.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # *text_resposta_2* updates
+            if text_resposta_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
-                text_resposta.frameNStart = frameN  # exact frame index
-                text_resposta.tStart = t  # local t and not account for scr refresh
-                text_resposta.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(text_resposta, 'tStartRefresh')  # time at next scr refresh
-                text_resposta.setAutoDraw(True)
-            if text_resposta.status == STARTED:
+                text_resposta_2.frameNStart = frameN  # exact frame index
+                text_resposta_2.tStart = t  # local t and not account for scr refresh
+                text_resposta_2.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(text_resposta_2, 'tStartRefresh')  # time at next scr refresh
+                text_resposta_2.setAutoDraw(True)
+            if text_resposta_2.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > text_resposta.tStartRefresh + 2-frameTolerance:
+                if tThisFlipGlobal > text_resposta_2.tStartRefresh + 2-frameTolerance:
                     # keep track of stop time/frame for later
-                    text_resposta.tStop = t  # not accounting for scr refresh
-                    text_resposta.frameNStop = frameN  # exact frame index
-                    win.timeOnFlip(text_resposta, 'tStopRefresh')  # time at next scr refresh
-                    text_resposta.setAutoDraw(False)
+                    text_resposta_2.tStop = t  # not accounting for scr refresh
+                    text_resposta_2.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(text_resposta_2, 'tStopRefresh')  # time at next scr refresh
+                    text_resposta_2.setAutoDraw(False)
             
-            # *key_resp_2* updates
+            # *key_resp_3* updates
             waitOnFlip = False
-            if key_resp_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            if key_resp_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
-                key_resp_2.frameNStart = frameN  # exact frame index
-                key_resp_2.tStart = t  # local t and not account for scr refresh
-                key_resp_2.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(key_resp_2, 'tStartRefresh')  # time at next scr refresh
-                key_resp_2.status = STARTED
+                key_resp_3.frameNStart = frameN  # exact frame index
+                key_resp_3.tStart = t  # local t and not account for scr refresh
+                key_resp_3.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(key_resp_3, 'tStartRefresh')  # time at next scr refresh
+                key_resp_3.status = STARTED
                 # keyboard checking is just starting
                 waitOnFlip = True
-                win.callOnFlip(key_resp_2.clock.reset)  # t=0 on next screen flip
-                win.callOnFlip(key_resp_2.clearEvents, eventType='keyboard')  # clear events on next screen flip
-            if key_resp_2.status == STARTED:
+                win.callOnFlip(key_resp_3.clock.reset)  # t=0 on next screen flip
+                win.callOnFlip(key_resp_3.clearEvents, eventType='keyboard')  # clear events on next screen flip
+            if key_resp_3.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > key_resp_2.tStartRefresh + 2-frameTolerance:
+                if tThisFlipGlobal > key_resp_3.tStartRefresh + 2-frameTolerance:
                     # keep track of stop time/frame for later
-                    key_resp_2.tStop = t  # not accounting for scr refresh
-                    key_resp_2.frameNStop = frameN  # exact frame index
-                    win.timeOnFlip(key_resp_2, 'tStopRefresh')  # time at next scr refresh
-                    key_resp_2.status = FINISHED
-            if key_resp_2.status == STARTED and not waitOnFlip:
-                theseKeys = key_resp_2.getKeys(keyList=['1', '2'], waitRelease=False)
+                    key_resp_3.tStop = t  # not accounting for scr refresh
+                    key_resp_3.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(key_resp_3, 'tStopRefresh')  # time at next scr refresh
+                    key_resp_3.status = FINISHED
+            if key_resp_3.status == STARTED and not waitOnFlip:
+                theseKeys = key_resp_3.getKeys(keyList=['1', '2'], waitRelease=False)
                 if len(theseKeys):
                     theseKeys = theseKeys[0]  # at least one key was pressed
                     
                     # check for quit:
                     if "escape" == theseKeys:
                         endExpNow = True
-                    key_resp_2.keys = theseKeys.name  # just the last key pressed
-                    key_resp_2.rt = theseKeys.rt
+                    key_resp_3.keys = theseKeys.name  # just the last key pressed
+                    key_resp_3.rt = theseKeys.rt
+                    # was this 'correct'?
+                    if (key_resp_3.keys == str(ee[i])) or (key_resp_3.keys == ee[i]):
+                        key_resp_3.corr = 1
+                    else:
+                        key_resp_3.corr = 0
                     # a response ends the routine
                     continueRoutine = False
             
@@ -1626,7 +1575,7 @@ for thisTrial_3 in trials_3:
             if not continueRoutine:  # a component has requested a forced-end of Routine
                 break
             continueRoutine = False  # will revert to True if at least one component still running
-            for thisComponent in respostaComponents:
+            for thisComponent in resposta_2Components:
                 if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
                     continueRoutine = True
                     break  # at least one component has not yet finished
@@ -1635,20 +1584,23 @@ for thisTrial_3 in trials_3:
             if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
                 win.flip()
         
-        # -------Ending Routine "resposta"-------
-        for thisComponent in respostaComponents:
+        # -------Ending Routine "resposta_2"-------
+        for thisComponent in resposta_2Components:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        trials_2.addData('text_resposta.started', text_resposta.tStartRefresh)
-        trials_2.addData('text_resposta.stopped', text_resposta.tStopRefresh)
         # check responses
-        if key_resp_2.keys in ['', [], None]:  # No response was made
-            key_resp_2.keys = None
-        trials_2.addData('key_resp_2.keys',key_resp_2.keys)
-        if key_resp_2.keys != None:  # we had a response
-            trials_2.addData('key_resp_2.rt', key_resp_2.rt)
-        trials_2.addData('key_resp_2.started', key_resp_2.tStartRefresh)
-        trials_2.addData('key_resp_2.stopped', key_resp_2.tStopRefresh)
+        if key_resp_3.keys in ['', [], None]:  # No response was made
+            key_resp_3.keys = None
+            # was no response the correct answer?!
+            if str(ee[i]).lower() == 'none':
+               key_resp_3.corr = 1;  # correct non-response
+            else:
+               key_resp_3.corr = 0;  # failed to respond (incorrectly)
+        # store data for trials_2 (TrialHandler)
+        trials_2.addData('key_resp_3.keys',key_resp_3.keys)
+        trials_2.addData('key_resp_3.corr', key_resp_3.corr)
+        if key_resp_3.keys != None:  # we had a response
+            trials_2.addData('key_resp_3.rt', key_resp_3.rt)
         
         # ------Prepare to start Routine "confianca"-------
         # update component parameters for each repeat
@@ -1717,13 +1669,8 @@ for thisTrial_3 in trials_3:
         for thisComponent in confiancaComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        trials_2.addData('text_2.started', text_2.tStartRefresh)
-        trials_2.addData('text_2.stopped', text_2.tStopRefresh)
         # store data for trials_2 (TrialHandler)
         trials_2.addData('rating.response', rating.getRating())
-        trials_2.addData('rating.rt', rating.getRT())
-        trials_2.addData('rating.started', rating.tStart)
-        trials_2.addData('rating.stopped', rating.tStop)
         # the Routine "confianca" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         thisExp.nextEntry()

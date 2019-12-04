@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v3.2.3),
-    on sex 22 nov 2019 15:38:03 -03
+    on qua 04 dez 2019 15:16:01 -03
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -1301,7 +1301,7 @@ for thisTrial_3 in trials_3:
             tThisFlipGlobal = win.getFutureFlipTime(clock=None)
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
-            if ee[i] == 0:
+            if ee[i] == 1:
                 file = caminho + 'f' + str(ff[i]) + '.jpg'
             else:
                 file = caminho + 'd' +str(dd[i]) + '.jpg'
@@ -1441,7 +1441,7 @@ for thisTrial_3 in trials_3:
             tThisFlipGlobal = win.getFutureFlipTime(clock=None)
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
-            if ee[i] == 1:
+            if ee[i] == 2:
                 file = caminho + 'f' + str(ff[i]) + '.jpg'
             else:
                 file = caminho + 'd' + str(dd[i]) + '.jpg'

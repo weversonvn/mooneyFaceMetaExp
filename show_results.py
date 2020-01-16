@@ -32,12 +32,15 @@ __status__ = "Production"
 
 import sys, csv
 import numpy as np
+from sklearn.preprocessing import label_binarize
+from sklearn.metrics import auc
 
 def read_file(arquivo):
     rating = np.empty(0) # to store rating responses
     answer = np.empty(0) # to store if answers are correct or not
     with open(arquivo, newline='') as f:
         reader = csv.reader(f) # read csv file
+        #first = True
         try:
             for row in reader: # read row by row
                 if row[4] != '': # operates only on the rows of blocks 1 and 3
@@ -48,9 +51,36 @@ def read_file(arquivo):
                     rating = np.append(rating, row[14]) # stores rating
         except csv.Error as e: # throw an exception if an error occurs
             sys.exit('file {}, line {}: {}'.format(arquivo, reader.line_num, e))
-    rating = rating[2:] # remove the first line of csv file (the same on next line)
-    answer = answer[2:]
+    rating = np.uint8(rating[2:]) # remove the first line of csv file (the same on next line)
+    answer = np.uint8(answer[2:]) # and convert to int
     return rating, answer # returns both variables
 
-arquivo = sys.argv[1]
+def calculate_roc(rating, answer):
+    total_positive = np.count_nonzero(answer) # to store the total of correct answers
+    total_negative = len(answer)-total_positive # to store the total of incorrect answers
+    tpr = np.empty(0) # true positive rate
+    fpr = np.empty(0) # false positive rate
+    for confidence in range(1,5):
+        true_positive = 0  # to store the number of true positive answers
+        false_positive = 0 # to store the number of false positive answers
+        for i in range(len(rating)):
+            if answer[i] == 1 and rating[i] > confidence:
+                true_positive += 1
+            if answer[i] == 0 and rating[i] > confidence:
+                false_positive += 1
+        try:
+            tpr = np.append(tpr, true_positive/total_positive)
+        except ZeroDivisionError:
+            tpr = np.append(tpr, np.exp(-100))
+        try:
+            fpr = np.append(fpr, false_positive/total_negative)
+        except ZeroDivisionError:
+            fpr = np.append(fpr, np.exp(-100))
+    roc = auc(fpr, tpr)
+    return tpr, fpr, roc
+
+
+#arquivo = sys.argv[1]
+arquivo = 'data/Rogério_meta_2019_dez_18_1752.csv'
 rating, answer = read_file(arquivo)
+tpr, fpr, roc = calculate_roc(rating, answer)

@@ -32,6 +32,7 @@ __status__ = "Production"
 
 import sys, csv
 import numpy as np
+import matplotlib.pyplot as plt
 from sklearn.metrics import auc
 
 def read_file(arquivo):
@@ -78,7 +79,20 @@ def calculate_roc(rating, answer):
     roc = auc(fpr, tpr) # calculates auc-roc
     return tpr, fpr, roc
 
+def plot_roc(tpr, fpr, roc):
+    plt.figure()
+    plt.plot(fpr, tpr, color='darkorange', # plots roc curve
+            lw=2, label='Metacognitive sensitivity = %0.2f)' % roc) # and shows auc value
+    plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--') # plots reference line
+    plt.xlim([0.0, 1.0]) # limitates x axis
+    plt.ylim([0.0, 1.05]) # limitates y axis
+    plt.xlabel('p (confidence|incorrect)') # label x axis
+    plt.ylabel('p (confidence|correct)') # label y axis
+    plt.title('Receiver operating characteristic') # plot title
+    plt.legend(loc="lower right") # position of legend
+    plt.show() # shows plot
 
 arquivo = sys.argv[1] # reads file from arguments
 rating, answer = read_file(arquivo)
 tpr, fpr, roc = calculate_roc(rating, answer)
+plot_roc(tpr, fpr, roc)

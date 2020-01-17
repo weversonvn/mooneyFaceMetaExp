@@ -32,7 +32,6 @@ __status__ = "Production"
 
 import sys, csv
 import numpy as np
-from sklearn.preprocessing import label_binarize
 from sklearn.metrics import auc
 
 def read_file(arquivo):
@@ -60,27 +59,26 @@ def calculate_roc(rating, answer):
     total_negative = len(answer)-total_positive # to store the total of incorrect answers
     tpr = np.empty(0) # true positive rate
     fpr = np.empty(0) # false positive rate
-    for confidence in range(1,5):
+    for confidence in range(6):
         true_positive = 0  # to store the number of true positive answers
         false_positive = 0 # to store the number of false positive answers
-        for i in range(len(rating)):
+        for i in range(len(rating)): # calculates the number of true and false positives
             if answer[i] == 1 and rating[i] > confidence:
                 true_positive += 1
             if answer[i] == 0 and rating[i] > confidence:
                 false_positive += 1
         try:
-            tpr = np.append(tpr, true_positive/total_positive)
-        except ZeroDivisionError:
+            tpr = np.append(tpr, true_positive/total_positive) # calculates true positive rate
+        except ZeroDivisionError: # handle if there is no positive answer
             tpr = np.append(tpr, np.exp(-100))
         try:
-            fpr = np.append(fpr, false_positive/total_negative)
-        except ZeroDivisionError:
+            fpr = np.append(fpr, false_positive/total_negative) # calculates false positive rate
+        except ZeroDivisionError: # handle if there is no negative answer
             fpr = np.append(fpr, np.exp(-100))
-    roc = auc(fpr, tpr)
+    roc = auc(fpr, tpr) # calculates auc-roc
     return tpr, fpr, roc
 
 
-#arquivo = sys.argv[1]
-arquivo = 'data/Rogério_meta_2019_dez_18_1752.csv'
+arquivo = sys.argv[1] # reads file from arguments
 rating, answer = read_file(arquivo)
 tpr, fpr, roc = calculate_roc(rating, answer)

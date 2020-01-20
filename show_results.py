@@ -30,7 +30,7 @@ __maintainer__ = "Weverson Nascimento"
 __email__ = "weverson@ufpa.br"
 __status__ = "Production"
 
-import sys, csv
+import sys, csv, os
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import auc
@@ -90,9 +90,15 @@ def plot_roc(tpr, fpr, roc):
     plt.ylabel('p (confidence|correct)') # label y axis
     plt.title('Receiver operating characteristic') # plot title
     plt.legend(loc="lower right") # position of legend
-    plt.show() # shows plot
 
-arquivo = sys.argv[1] # reads file from arguments
-rating, answer = read_file(arquivo)
-tpr, fpr, roc = calculate_roc(rating, answer)
-plot_roc(tpr, fpr, roc)
+def search_file():
+    path_list = os.popen('ls data/*.csv').read().split('\n') # create a list with all csv files
+    for arquivo in path_list: # do the following for each file
+        try:
+            rating, answer = read_file(arquivo) # run function to read the csv file
+            tpr, fpr, roc = calculate_roc(rating, answer) # run function to calculate metrics
+            plot_roc(tpr, fpr, roc) # run function to generate the plots
+        except FileNotFoundError: # handles if no csv file can be found
+            pass
+    plt.show() # shows all the plots
+search_file()

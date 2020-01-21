@@ -1,7 +1,9 @@
 # mooneyFaceMetaExp
 
 ## Descrição
-Experimento de metacognição utilizando faces de Mooney.
+Este projeto contém um experimento de avaliação de metacognição utilizando um teste baseado em faces de Mooney.
+O experimento consiste de 4 blocos de 40 __trials__ cada, onde cada __trial__ é composto pela exibição de um par de imagens, uma contendo uma face e outra não, uma por vez, seguida da pergunta em tela de qual das duas imagens continha a face, e posteriormente uma pergunta do nível de confiança na resposta, variando em uma escala de 1 até 5. Cada imagem é exibida por 200 ms, com um intervalo de 300 ms entre elas, e o participante tem 2000 ms para responder a pergunta de qual das imagens contém a face. Não há limite de tempo para responder o nível de confiança. A ordem das imagens é definida aleatoriamente no início de cada experimento. O bloco 1 é igual ao bloco 3, bem como o bloco 2 é igual ao bloco 4.
+Os resultados de cada experimento são exibidos através do gráfico da curva AUC-ROC, onde a área abaixo da curva ROC representa a sensibilidade metacognitiva do participante do experimento.
 
 ### Requisitos:
 * [PsychoPy v3.2.3](https://www.psychopy.org/) 
@@ -10,9 +12,13 @@ Experimento de metacognição utilizando faces de Mooney.
 * [Scikit-learn](https://scikit-learn.org/)
 
 ### Uso:
-Existem duas maneiras de rodar a aplicação:
-* Abra o arquivo **meta.psyexp** dentro do Psychopy e rode o experimento.
-* Execute `python meta.py` no terminal (para Linux) 
+##### Existem duas maneiras de executar o experimento:
+* Abra o arquivo **meta.psyexp** dentro do Psychopy e rode o experimento
+* Execute `python meta.py` no terminal dentro do diretório raiz do projeto 
+
+##### Para a exibição dos resultados:
+* Execute `python show_results.py` dentro do diretório raiz do projeto
+
 
 ### Licença:
 

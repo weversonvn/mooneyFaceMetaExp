@@ -5,6 +5,9 @@ Experimento de metacognição utilizando faces de Mooney.
 
 ### Requisitos:
 * [PsychoPy v3.2.3](https://www.psychopy.org/) 
+* [Numpy](https://numpy.org/)
+* [matplotlib](https://matplotlib.org/)
+* [Scikit-learn](https://scikit-learn.org/)
 
 ### Uso:
 Existem duas maneiras de rodar a aplicação:

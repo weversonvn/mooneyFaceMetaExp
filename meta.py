@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v3.2.3),
-    on seg 17 fev 2020 12:43:29 -03
+    on seg 17 fev 2020 15:09:13 -03
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -80,19 +80,33 @@ defaultKeyboard = keyboard.Keyboard()
 
 # Initialize components for Routine "tela_inicial"
 tela_inicialClock = core.Clock()
+screens = ([],[],[],[],[],[],[]) # create a tuple of empty lists
+texts = ['','','','','','',''] # create a list of empty strings
+with open('languages/pt-br') as f: # open translation file
+    for element in screens: 
+        for line in f: # iterates over the lines in language file
+            if line != '#\n': # checks for the # separator
+                element.append(line) # insert the line into the list in tuple
+            else:
+                break # pass when # is found
+cont = 0
+for element in screens:
+    texts[cont] = ''.join(element) # concatenates the list elements into a string
+    cont += 1
+
 texto_tela_inicial = visual.TextStim(win=win, name='texto_tela_inicial',
-    text='Bem vindo ao experimento de metacognição com faces de Mooney.\nVocê verá uma sequência de duas imagens e, após vê-las, deverá responder em qual das duas reconhece uma face humana. Apenas uma delas contém uma face.\nApós isso, você deverá informar uma estimativa da sua confiança na resposta, em uma escala de 1 a 5.\nPressione a tecla “Espaço” do seu teclado para prosseguir.',
+    text=texts[0],
     font='Arial',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',
-    depth=0.0);
+    depth=-1.0);
 key_resp_ti = keyboard.Keyboard()
 
 # Initialize components for Routine "instrucao_resposta"
 instrucao_respostaClock = core.Clock()
 text_ir = visual.TextStim(win=win, name='text_ir',
-    text='Pressione "1" ou "2" caso você reconheça a face humana na primeira ou segunda imagem, respectivamente.\n\nVocê terá dois segundos para responder a essa pergunta.\n\nPara indicar a confiança da sua resposta não há limite de tempo.\n\nPressione a tecla “Espaço” do seu teclado para prosseguir.',
+    text=texts[1],
     font='Arial',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
@@ -103,7 +117,7 @@ key_resp = keyboard.Keyboard()
 # Initialize components for Routine "instrucao_inicio"
 instrucao_inicioClock = core.Clock()
 text_ii = visual.TextStim(win=win, name='text_ii',
-    text='Posicione suas mãos.\n\nAo pressionar a tecla "Espaço" do seu teclado o experimento iniciará, com uma cruz de fixação sendo exibida no centro, seguida das imagens e, posteriormente, as perguntas.\n\nO experimento é composto de 4 blocos de 40 pares cada.\n\nPressione a tecla “Espaço” do seu teclado para prosseguir.',
+    text=texts[2],
     font='Arial',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
@@ -179,7 +193,7 @@ image_2 = visual.ImageStim(
 # Initialize components for Routine "resposta"
 respostaClock = core.Clock()
 text_4 = visual.TextStim(win=win, name='text_4',
-    text='Qual a imagem com a face humana, 1 ou 2?',
+    text=texts[4],
     font='Arial',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
@@ -190,7 +204,7 @@ key_resp_2 = keyboard.Keyboard()
 # Initialize components for Routine "confianca"
 confiancaClock = core.Clock()
 text_2 = visual.TextStim(win=win, name='text_2',
-    text='Responda qual o grau de confiança na sua resposta, sendo 1 menos confiante e 5 mais confiante.\n\nSelecione sua resposta clicando na barra abaixo ou pressionando o número correspondente no teclado, e, em seguida, pressione a tecla "Enter".',
+    text=texts[5],
     font='Arial',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
@@ -253,7 +267,7 @@ image_3 = visual.ImageStim(
 # Initialize components for Routine "resposta_2"
 resposta_2Clock = core.Clock()
 text_resposta_2 = visual.TextStim(win=win, name='text_resposta_2',
-    text='Qual a imagem com a face humana, 1 ou 2?',
+    text=texts[5],
     font='Arial',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
@@ -264,7 +278,7 @@ key_resp_3 = keyboard.Keyboard()
 # Initialize components for Routine "confianca"
 confiancaClock = core.Clock()
 text_2 = visual.TextStim(win=win, name='text_2',
-    text='Responda qual o grau de confiança na sua resposta, sendo 1 menos confiante e 5 mais confiante.\n\nSelecione sua resposta clicando na barra abaixo ou pressionando o número correspondente no teclado, e, em seguida, pressione a tecla "Enter".',
+    text=texts[5],
     font='Arial',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
@@ -275,7 +289,7 @@ rating = visual.RatingScale(win=win, name='rating', marker='triangle', size=1.0,
 # Initialize components for Routine "fim"
 fimClock = core.Clock()
 text_5 = visual.TextStim(win=win, name='text_5',
-    text='Obrigado por participar do experimento.',
+    text=texts[6],
     font='Arial',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
@@ -585,7 +599,7 @@ for thisTrial_3 in trials_3:
         frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
         # update/draw components on each frame
         i = 0
-        texto = "Bloco %i" %(bloco)
+        texto = texts[3][:-1] + " %i" %(bloco)
         
         # *text_3* updates
         if text_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
@@ -1154,7 +1168,7 @@ for thisTrial_3 in trials_3:
         frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
         # update/draw components on each frame
         i = 0
-        texto = "Bloco %i" %(bloco)
+        texto = texts[3][:-1] + " %i" %(bloco)
         
         # *text_3* updates
         if text_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:

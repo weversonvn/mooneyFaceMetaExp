@@ -33,6 +33,21 @@
   </Settings>
   <Routines>
     <Routine name="tela_inicial">
+      <CodeComponent name="code_7">
+        <Param name="Begin Experiment" updates="constant" val="screens = ([],[],[],[],[],[],[]) # create a tuple of empty lists&amp;#10;texts = ['','','','','','',''] # create a list of empty strings&amp;#10;with open('languages/pt-br') as f: # open translation file&amp;#10;    for element in screens: &amp;#10;        for line in f: # iterates over the lines in language file&amp;#10;            if line != '#\n': # checks for the # separator&amp;#10;                element.append(line) # insert the line into the list in tuple&amp;#10;            else:&amp;#10;                break # pass when # is found&amp;#10;cont = 0&amp;#10;for element in screens:&amp;#10;    texts[cont] = ''.join(element) # concatenates the list elements into a string&amp;#10;    cont += 1&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Py" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="code_7" valType="code"/>
+      </CodeComponent>
       <TextComponent name="texto_tela_inicial">
         <Param name="color" updates="constant" val="white" valType="str"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
@@ -53,7 +68,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="Bem vindo ao experimento de metacognição com faces de Mooney.&amp;#10;Você verá uma sequência de duas imagens e, após vê-las, deverá responder em qual das duas reconhece uma face humana. Apenas uma delas contém uma face.&amp;#10;Após isso, você deverá informar uma estimativa da sua confiança na resposta, em uma escala de 1 a 5.&amp;#10;Pressione a tecla “Espaço” do seu teclado para prosseguir." valType="str"/>
+        <Param name="text" updates="constant" val="$texts[0]" valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
       </TextComponent>
@@ -97,7 +112,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="Pressione &quot;1&quot; ou &quot;2&quot; caso você reconheça a face humana na primeira ou segunda imagem, respectivamente.&amp;#10;&amp;#10;Você terá dois segundos para responder a essa pergunta.&amp;#10;&amp;#10;Para indicar a confiança da sua resposta não há limite de tempo.&amp;#10;&amp;#10;Pressione a tecla “Espaço” do seu teclado para prosseguir." valType="str"/>
+        <Param name="text" updates="constant" val="$texts[1]" valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
       </TextComponent>
@@ -141,7 +156,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="Posicione suas mãos.&amp;#10;&amp;#10;Ao pressionar a tecla &quot;Espaço&quot; do seu teclado o experimento iniciará, com uma cruz de fixação sendo exibida no centro, seguida das imagens e, posteriormente, as perguntas.&amp;#10;&amp;#10;O experimento é composto de 4 blocos de 40 pares cada.&amp;#10;&amp;#10;Pressione a tecla “Espaço” do seu teclado para prosseguir." valType="str"/>
+        <Param name="text" updates="constant" val="$texts[2]" valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
       </TextComponent>
@@ -336,7 +351,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="Responda qual o grau de confiança na sua resposta, sendo 1 menos confiante e 5 mais confiante.&amp;#10;&amp;#10;Selecione sua resposta clicando na barra abaixo ou pressionando o número correspondente no teclado, e, em seguida, pressione a tecla &quot;Enter&quot;." valType="str"/>
+        <Param name="text" updates="constant" val="$texts[5]" valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
       </TextComponent>
@@ -463,7 +478,7 @@
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
-        <Param name="Each Frame" updates="constant" val="i = 0&amp;#10;texto = &quot;Bloco %i&quot; %(bloco)" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="i = 0&amp;#10;texto = texts[3][:-1] + &quot; %i&quot; %(bloco)" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
@@ -519,7 +534,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="2" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="Qual a imagem com a face humana, 1 ou 2?" valType="str"/>
+        <Param name="text" updates="constant" val="$texts[5]" valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
       </TextComponent>
@@ -563,7 +578,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="2" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="Qual a imagem com a face humana, 1 ou 2?" valType="str"/>
+        <Param name="text" updates="constant" val="$texts[4]" valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
       </TextComponent>
@@ -607,7 +622,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="5.0" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="Obrigado por participar do experimento." valType="str"/>
+        <Param name="text" updates="constant" val="$texts[6]" valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
       </TextComponent>

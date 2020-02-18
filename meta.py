@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v3.2.3),
-    on seg 17 fev 2020 15:09:13 -03
+    on ter 18 fev 2020 12:37:37 -03
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -78,24 +78,30 @@ else:
 # create a default keyboard (e.g. to check for escape)
 defaultKeyboard = keyboard.Keyboard()
 
+# Initialize components for Routine "language"
+languageClock = core.Clock()
+mouse = event.Mouse(win=win)
+x, y = [None, None]
+mouse.mouseClock = core.Clock()
+english = visual.TextStim(win=win, name='english',
+    text='English',
+    font='Arial',
+    pos=(-0.25, 0), height=0.05, wrapWidth=None, ori=0, 
+    color='white', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
+    depth=-1.0);
+portugues = visual.TextStim(win=win, name='portugues',
+    text='Português',
+    font='Arial',
+    pos=(0.25, 0), height=0.05, wrapWidth=None, ori=0, 
+    color='white', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
+    depth=-2.0);
+
 # Initialize components for Routine "tela_inicial"
 tela_inicialClock = core.Clock()
-screens = ([],[],[],[],[],[],[]) # create a tuple of empty lists
-texts = ['','','','','','',''] # create a list of empty strings
-with open('languages/pt-br') as f: # open translation file
-    for element in screens: 
-        for line in f: # iterates over the lines in language file
-            if line != '#\n': # checks for the # separator
-                element.append(line) # insert the line into the list in tuple
-            else:
-                break # pass when # is found
-cont = 0
-for element in screens:
-    texts[cont] = ''.join(element) # concatenates the list elements into a string
-    cont += 1
-
 texto_tela_inicial = visual.TextStim(win=win, name='texto_tela_inicial',
-    text=texts[0],
+    text='default text',
     font='Arial',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
@@ -106,7 +112,7 @@ key_resp_ti = keyboard.Keyboard()
 # Initialize components for Routine "instrucao_resposta"
 instrucao_respostaClock = core.Clock()
 text_ir = visual.TextStim(win=win, name='text_ir',
-    text=texts[1],
+    text='default text',
     font='Arial',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
@@ -117,7 +123,7 @@ key_resp = keyboard.Keyboard()
 # Initialize components for Routine "instrucao_inicio"
 instrucao_inicioClock = core.Clock()
 text_ii = visual.TextStim(win=win, name='text_ii',
-    text=texts[2],
+    text='default text',
     font='Arial',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
@@ -193,7 +199,7 @@ image_2 = visual.ImageStim(
 # Initialize components for Routine "resposta"
 respostaClock = core.Clock()
 text_4 = visual.TextStim(win=win, name='text_4',
-    text=texts[4],
+    text='default text',
     font='Arial',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
@@ -204,7 +210,7 @@ key_resp_2 = keyboard.Keyboard()
 # Initialize components for Routine "confianca"
 confiancaClock = core.Clock()
 text_2 = visual.TextStim(win=win, name='text_2',
-    text=texts[5],
+    text='default text',
     font='Arial',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
@@ -267,7 +273,7 @@ image_3 = visual.ImageStim(
 # Initialize components for Routine "resposta_2"
 resposta_2Clock = core.Clock()
 text_resposta_2 = visual.TextStim(win=win, name='text_resposta_2',
-    text=texts[5],
+    text='default text',
     font='Arial',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
@@ -278,7 +284,7 @@ key_resp_3 = keyboard.Keyboard()
 # Initialize components for Routine "confianca"
 confiancaClock = core.Clock()
 text_2 = visual.TextStim(win=win, name='text_2',
-    text=texts[5],
+    text='default text',
     font='Arial',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
@@ -289,7 +295,7 @@ rating = visual.RatingScale(win=win, name='rating', marker='triangle', size=1.0,
 # Initialize components for Routine "fim"
 fimClock = core.Clock()
 text_5 = visual.TextStim(win=win, name='text_5',
-    text=texts[6],
+    text='default text',
     font='Arial',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
@@ -300,8 +306,140 @@ text_5 = visual.TextStim(win=win, name='text_5',
 globalClock = core.Clock()  # to track the time since experiment started
 routineTimer = core.CountdownTimer()  # to track time remaining of each (non-slip) routine 
 
+# ------Prepare to start Routine "language"-------
+# update component parameters for each repeat
+# setup some python lists for storing info about the mouse
+mouse.clicked_name = []
+gotValidClick = False  # until a click is received
+# keep track of which components have finished
+languageComponents = [mouse, english, portugues]
+for thisComponent in languageComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+languageClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+continueRoutine = True
+
+# -------Run Routine "language"-------
+while continueRoutine:
+    # get current time
+    t = languageClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=languageClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    # *mouse* updates
+    if mouse.status == NOT_STARTED and t >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        mouse.frameNStart = frameN  # exact frame index
+        mouse.tStart = t  # local t and not account for scr refresh
+        mouse.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(mouse, 'tStartRefresh')  # time at next scr refresh
+        mouse.status = STARTED
+        mouse.mouseClock.reset()
+        prevButtonState = mouse.getPressed()  # if button is down already this ISN'T a new click
+    if mouse.status == STARTED:  # only update if started and not finished!
+        buttons = mouse.getPressed()
+        if buttons != prevButtonState:  # button state changed?
+            prevButtonState = buttons
+            if sum(buttons) > 0:  # state changed to a new click
+                # check if the mouse was inside our 'clickable' objects
+                gotValidClick = False
+                for obj in [english, portugues]:
+                    if obj.contains(mouse):
+                        gotValidClick = True
+                        mouse.clicked_name.append(obj.name)
+                if gotValidClick:  # abort routine on response
+                    continueRoutine = False
+    
+    # *english* updates
+    if english.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        english.frameNStart = frameN  # exact frame index
+        english.tStart = t  # local t and not account for scr refresh
+        english.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(english, 'tStartRefresh')  # time at next scr refresh
+        english.setAutoDraw(True)
+    
+    # *portugues* updates
+    if portugues.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        portugues.frameNStart = frameN  # exact frame index
+        portugues.tStart = t  # local t and not account for scr refresh
+        portugues.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(portugues, 'tStartRefresh')  # time at next scr refresh
+        portugues.setAutoDraw(True)
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in languageComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "language"-------
+for thisComponent in languageComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+# store data for thisExp (ExperimentHandler)
+x, y = mouse.getPos()
+buttons = mouse.getPressed()
+if sum(buttons):
+    # check if the mouse was inside our 'clickable' objects
+    gotValidClick = False
+    for obj in [english, portugues]:
+        if obj.contains(mouse):
+            gotValidClick = True
+            mouse.clicked_name.append(obj.name)
+thisExp.addData('mouse.x', x)
+thisExp.addData('mouse.y', y)
+thisExp.addData('mouse.leftButton', buttons[0])
+thisExp.addData('mouse.midButton', buttons[1])
+thisExp.addData('mouse.rightButton', buttons[2])
+if len(mouse.clicked_name):
+    thisExp.addData('mouse.clicked_name', mouse.clicked_name[0])
+thisExp.nextEntry()
+# the Routine "language" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
+
 # ------Prepare to start Routine "tela_inicial"-------
 # update component parameters for each repeat
+screens = ([],[],[],[],[],[],[]) # create a tuple of empty lists
+texts = ['','','','','','',''] # create a list of empty strings
+if mouse.clicked_name[0] == 'portugues':
+    language_file = 'languages/pt-br'
+elif mouse.clicked_name[0] == 'english':
+    language_file = 'languages/en'
+with open(language_file) as g: # open translation file
+    for element in screens: 
+        for line in g: # iterates over the lines in language file
+            if line != '#\n': # checks for the # separator
+                element.append(line) # insert the line into the list in tuple
+            else:
+                break # pass when # is found
+cont = 0
+for element in screens:
+    texts[cont] = ''.join(element) # concatenates the list elements into a string
+    cont += 1
+
+texto_tela_inicial.setText(texts[0])
 key_resp_ti.keys = []
 key_resp_ti.rt = []
 # keep track of which components have finished
@@ -386,6 +524,7 @@ routineTimer.reset()
 
 # ------Prepare to start Routine "instrucao_resposta"-------
 # update component parameters for each repeat
+text_ir.setText(texts[1])
 key_resp.keys = []
 key_resp.rt = []
 # keep track of which components have finished
@@ -470,6 +609,7 @@ routineTimer.reset()
 
 # ------Prepare to start Routine "instrucao_inicio"-------
 # update component parameters for each repeat
+text_ii.setText(texts[2])
 key_resp_ii.keys = []
 key_resp_ii.rt = []
 # keep track of which components have finished
@@ -946,6 +1086,7 @@ for thisTrial_3 in trials_3:
         # ------Prepare to start Routine "resposta"-------
         routineTimer.add(2.000000)
         # update component parameters for each repeat
+        text_4.setText(texts[4])
         key_resp_2.keys = []
         key_resp_2.rt = []
         # keep track of which components have finished
@@ -1066,6 +1207,7 @@ for thisTrial_3 in trials_3:
         
         # ------Prepare to start Routine "confianca"-------
         # update component parameters for each repeat
+        text_2.setText(texts[5])
         rating.reset()
         # keep track of which components have finished
         confiancaComponents = [text_2, rating]
@@ -1515,6 +1657,7 @@ for thisTrial_3 in trials_3:
         # ------Prepare to start Routine "resposta_2"-------
         routineTimer.add(2.000000)
         # update component parameters for each repeat
+        text_resposta_2.setText(texts[5])
         key_resp_3.keys = []
         key_resp_3.rt = []
         # keep track of which components have finished
@@ -1635,6 +1778,7 @@ for thisTrial_3 in trials_3:
         
         # ------Prepare to start Routine "confianca"-------
         # update component parameters for each repeat
+        text_2.setText(texts[5])
         rating.reset()
         # keep track of which components have finished
         confiancaComponents = [text_2, rating]
@@ -1716,6 +1860,7 @@ for thisTrial_3 in trials_3:
 # ------Prepare to start Routine "fim"-------
 routineTimer.add(5.000000)
 # update component parameters for each repeat
+text_5.setText(texts[6])
 # keep track of which components have finished
 fimComponents = [text_5]
 for thisComponent in fimComponents:

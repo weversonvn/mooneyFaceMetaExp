@@ -43,12 +43,12 @@ def read_file(arquivo):
         #first = True
         try:
             for row in reader: # read row by row
-                if row[4] != '': # operates only on the rows of blocks 1 and 3
-                    answer = np.append(answer, row[13]) # stores answer
-                    rating = np.append(rating, row[15]) # stores rating
                 if row[8] != '': # operates only on the rows of blocks 2 and 4
-                    answer = np.append(answer, row[17]) # stores answer
-                    rating = np.append(rating, row[15]) # stores rating
+                    answer = np.append(answer, row[27]) # stores answer
+                    rating = np.append(rating, row[25]) # stores rating
+                if row[12] != '': # operates only on the rows of blocks 3 and 5
+                    answer = np.append(answer, row[30]) # stores answer
+                    rating = np.append(rating, row[25]) # stores rating
         except csv.Error as e: # throw an exception if an error occurs
             sys.exit('file {}, line {}: {}'.format(arquivo, reader.line_num, e))
     rating = np.uint8(rating[2:]) # remove the first line of csv file (the same on next line)

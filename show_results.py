@@ -1,10 +1,10 @@
 """
-=======================================================
-show_results.py
-=======================================================
-
 Conjunto de funcoes para leitura e exibição dos dados obtidos.
 
+Este arquivo contém as funções para leitura e exibição gráfica dos dados
+obtidos nos experimentos, bem como calcula as métricas de avaliação dos
+resultados. O código assume que os dados estão na pasta "data" e estão
+no formato csv.
 
    Copyright 2020 Weverson Nascimento
 
@@ -30,12 +30,15 @@ __maintainer__ = "Weverson Nascimento"
 __email__ = "weverson@ufpa.br"
 __status__ = "Production"
 
-import sys, csv, os
+import sys
+import csv
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import auc
 
 def read_file(arquivo):
+    """Lê o arquivo csv e retorna as respostas corretas e o rating."""
     rating = np.empty(0) # to store rating responses
     answer = np.empty(0) # to store if answers are correct or not
     with open(arquivo, newline='') as f:
@@ -56,6 +59,7 @@ def read_file(arquivo):
     return rating, answer # returns both variables
 
 def calculate_roc(rating, answer):
+    """Calcula a área abaixo da curva ROC."""
     total_positive = np.count_nonzero(answer) # to store the total of correct answers
     total_negative = len(answer)-total_positive # to store the total of incorrect answers
     tpr = np.empty(0) # true positive rate
@@ -80,6 +84,7 @@ def calculate_roc(rating, answer):
     return tpr, fpr, roc
 
 def plot_roc(tpr, fpr, roc):
+    """Exibe a curva ROC e mostra o valor da área abaixo da curva."""
     plt.figure()
     plt.plot(fpr, tpr, color='darkorange', # plots roc curve
             lw=2, label='Metacognitive sensitivity = %0.2f)' % roc) # and shows auc value
@@ -92,6 +97,7 @@ def plot_roc(tpr, fpr, roc):
     plt.legend(loc="lower right") # position of legend
 
 def search_file():
+    """Busca por arquivos csv na pasta com os dados dos experimentos."""
     path_list = os.popen('ls data/*.csv').read().split('\n') # create a list with all csv files
     for arquivo in path_list: # do the following for each file
         try:

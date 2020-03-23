@@ -6,19 +6,19 @@ obtidos nos experimentos, bem como calcula as métricas de avaliação dos
 resultados. O código assume que os dados estão na pasta "data" e estão
 no formato csv.
 
-   Copyright 2020 Weverson Nascimento
+Copyright 2020 Weverson Nascimento
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-       http://www.apache.org/licenses/LICENSE-2.0
+    http://www.apache.org/licenses/LICENSE-2.0
 
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 """
 
 
@@ -46,39 +46,40 @@ def read_file(arquivo):
         #first = True
         try:
             for row in reader: # read row by row
-                if row[8] != '': # operates only on the rows of blocks 2 and 4
+                if row[8] != '': # operates only on blocks 2 and 4
                     answer = np.append(answer, row[27]) # stores answer
                     rating = np.append(rating, row[25]) # stores rating
-                if row[12] != '': # operates only on the rows of blocks 3 and 5
+                if row[12] != '': # operates only on blocks 3 and 5
                     answer = np.append(answer, row[30]) # stores answer
                     rating = np.append(rating, row[25]) # stores rating
         except csv.Error as e: # throw an exception if an error occurs
-            sys.exit('file {}, line {}: {}'.format(arquivo, reader.line_num, e))
-    rating = np.uint8(rating[2:]) # remove the first line of csv file (the same on next line)
+            sys.exit('file {}, line {}: {}'.format(
+                arquivo, reader.line_num, e))
+    rating = np.uint8(rating[2:]) # remove the first line of csv file
     answer = np.uint8(answer[2:]) # and convert to int
     return rating, answer # returns both variables
 
 def calculate_roc(rating, answer):
     """Calcula a área abaixo da curva ROC."""
-    total_positive = np.count_nonzero(answer) # to store the total of correct answers
-    total_negative = len(answer)-total_positive # to store the total of incorrect answers
+    total_positive = np.count_nonzero(answer) # stores correct answers
+    total_negative = len(answer)-total_positive # for incorrect answers
     tpr = np.empty(0) # true positive rate
     fpr = np.empty(0) # false positive rate
     for confidence in range(6):
-        true_positive = 0  # to store the number of true positive answers
-        false_positive = 0 # to store the number of false positive answers
-        for i in range(len(rating)): # calculates the number of true and false positives
+        true_positive = 0  # stores the number of true positive answers
+        false_positive = 0 # stores the number of false positive answers
+        for i in range(len(rating)): # calculates true/false positives
             if answer[i] == 1 and rating[i] > confidence:
                 true_positive += 1
             if answer[i] == 0 and rating[i] > confidence:
                 false_positive += 1
-        try:
-            tpr = np.append(tpr, true_positive/total_positive) # calculates true positive rate
-        except ZeroDivisionError: # handle if there is no positive answer
+        try: # calculates true positive rate
+            tpr = np.append(tpr, true_positive/total_positive)
+        except ZeroDivisionError: # handle if found no positive answer
             tpr = np.append(tpr, np.exp(-100))
-        try:
-            fpr = np.append(fpr, false_positive/total_negative) # calculates false positive rate
-        except ZeroDivisionError: # handle if there is no negative answer
+        try: # calculates false positive rate
+            fpr = np.append(fpr, false_positive/total_negative)
+        except ZeroDivisionError: # handle if found no negative answer
             fpr = np.append(fpr, np.exp(-100))
     roc = auc(fpr, tpr) # calculates auc-roc
     return tpr, fpr, roc
@@ -86,9 +87,10 @@ def calculate_roc(rating, answer):
 def plot_roc(tpr, fpr, roc):
     """Exibe a curva ROC e mostra o valor da área abaixo da curva."""
     plt.figure()
-    plt.plot(fpr, tpr, color='darkorange', # plots roc curve
-            lw=2, label='Metacognitive sensitivity = %0.2f)' % roc) # and shows auc value
-    plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--') # plots reference line
+    plt.plot(fpr, tpr, color='darkorange', lw=2, # plots roc curve
+            label='Metacognitive sensitivity = %0.2f)' % roc) # and auc
+    plt.plot([0, 1], [0, 1], color='navy',
+            lw=2, linestyle='--') # plots reference line
     plt.xlim([0.0, 1.0]) # limitates x axis
     plt.ylim([0.0, 1.05]) # limitates y axis
     plt.xlabel('p (confidence|incorrect)') # label x axis
@@ -98,12 +100,14 @@ def plot_roc(tpr, fpr, roc):
 
 def search_file():
     """Busca por arquivos csv na pasta com os dados dos experimentos."""
-    path_list = os.popen('ls data/*.csv').read().split('\n') # create a list with all csv files
+    path_list = os.popen(
+        'ls data/*.csv').read().split('\n') # list with csv files
     for arquivo in path_list: # do the following for each file
         try:
-            rating, answer = read_file(arquivo) # run function to read the csv file
-            tpr, fpr, roc = calculate_roc(rating, answer) # run function to calculate metrics
-            plot_roc(tpr, fpr, roc) # run function to generate the plots
+            rating, answer = read_file(arquivo) # read the csv file
+            tpr, fpr, roc = calculate_roc(
+                rating, answer) # calculate metrics
+            plot_roc(tpr, fpr, roc) # generate the plots
         except FileNotFoundError: # handles if no csv file can be found
             pass
     plt.show() # shows all the plots

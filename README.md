@@ -10,7 +10,7 @@ Os resultados de cada experimento são exibidos através do gráfico da curva AU
 
 ## Requisitos
 
-* [PsychoPy v3.2.3](https://www.psychopy.org/)
+* [PsychoPy v2020.2.5](https://www.psychopy.org/)
 * [Numpy](https://numpy.org/)
 * [matplotlib](https://matplotlib.org/)
 * [Scikit-learn](https://scikit-learn.org/)
